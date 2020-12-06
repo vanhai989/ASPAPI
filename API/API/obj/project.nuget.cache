@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "z6t7r4yLx3/kRUKMyJz1+/EnVw2+EXFJBKQJiph0LxyHkhJOaLOQV2JRPUkszZd9APNYS5TLa28pDk0yhn3P3g==",
+  "dgSpecHash": "whlGhpeZS6LR/WxTJ9aUr0kTjPXeD145LbumKB0Dg0+M9DeJpoIggNra4S5yCV/YReGORxEmUfPVfEMYct/HtQ==",
   "success": true,
-  "projectFilePath": "D:\\ASP\\API\\API\\API.csproj",
+  "projectFilePath": "D:\\ASP\\github_admin\\ASPAPI\\API\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\haide\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\haide\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.0\\microsoft.aspnetcore.authentication.jwtbearer.5.0.0.nupkg.sha512",
