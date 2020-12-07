@@ -45,20 +45,21 @@ namespace CRUDApi
                 options.AddDefaultPolicy(
                     builder => builder.AllowAnyOrigin());
             });
-            services.AddDbContext<ProductContext>(opt =>
-                                                    opt.UseSqlServer(Configuration.GetConnectionString("ProductConnectString")));
-
-            services.AddDbContext<CustomerContext>(opt =>
-                                                    opt.UseSqlServer(Configuration.GetConnectionString("ProductConnectString")));
-
+          
             // config appseting and get data from appSetting.json
 
-            var appsetting = Configuration.GetSection("ConnectionStrings");
-            services.Configure<ConnectionStrings>(appsetting);
-            var setting = appsetting.Get<ConnectionStrings>();
-            var secrectKey = Encoding.ASCII.GetBytes(setting.secrectKey);
+            var appsetting = Configuration.GetSection("AppSetting");
+            services.Configure<AppSetting>(appsetting);
+            var setting = appsetting.Get<AppSetting>();
+            var secrectKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(setting.secrectKey));
 
-            services.AddDbContext<AuthDbContext>(opt => opt.UseLazyLoadingProxies().UseSqlServer(setting.ProductConnectString), ServiceLifetime.Scoped);
+            services.AddDbContext<AuthDbContext>(opt => opt.UseLazyLoadingProxies().UseSqlServer(setting.ConnectString), ServiceLifetime.Scoped);
+
+            services.AddDbContext<ProductContext>(opt =>
+                                                  opt.UseSqlServer(setting.ConnectString), ServiceLifetime.Transient);
+
+            services.AddDbContext<CustomerContext>(opt =>
+                                                    opt.UseSqlServer(setting.ConnectString), ServiceLifetime.Transient);
 
             // this block code to validate authentication incomming resquest
             services.AddAuthentication(
@@ -74,15 +75,16 @@ namespace CRUDApi
                     t.SaveToken = false;
                     t.TokenValidationParameters = new TokenValidationParameters
                     {
+                        IssuerSigningKey = secrectKey, 
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(secrectKey), 
                         ValidateIssuer = false,
                         ValidateAudience = false,
-                        ClockSkew = TimeSpan.Zero
+                        ClockSkew = TimeSpan.Zero,
+                        ValidateActor = false,
                     };
-                }
-                ) ; 
+                });
 
+           /* services.AddMvc();*/
             // config response returned from server is camel case
             services.AddControllers().AddNewtonsoftJson(t => t.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
@@ -91,7 +93,6 @@ namespace CRUDApi
             services.AddTransient<ICustomerRespository,CustomerRespositoryIml>();
             services.AddTransient<IProductService, ProductServiceImpl>();
             services.AddTransient<ICustomerService, CustomerServiceImpl>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

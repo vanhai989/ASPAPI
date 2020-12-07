@@ -26,24 +26,24 @@ namespace CRUDApi.Controllers
     public class RefeshTokensController : ControllerBase
     {
         private readonly AuthDbContext _context;
-        private readonly ConnectionStrings connectionStrings;
+        private readonly AppSetting appSetting;
 
-        public RefeshTokensController(AuthDbContext context, IOptions<ConnectionStrings> option)
+        public RefeshTokensController(AuthDbContext context, IOptions<AppSetting> option)
         {
             _context = context;
-            connectionStrings = option.Value;
+            appSetting = option.Value;
         }
 
         // GET: api/RefeshTokens
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RefeshToken>>> GetRefeshTokens()
+        public async Task<ActionResult<IEnumerable<RefreshToken>>> GetRefeshTokens()
         {
             return await _context.RefeshTokens.ToListAsync();
         }
 
         // GET: api/RefeshTokens/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<RefeshToken>> GetRefeshToken(string id)
+        public async Task<ActionResult<RefreshToken>> GetRefeshToken(string id)
         {
             var refeshToken = await _context.RefeshTokens.FindAsync(id);
 
@@ -58,7 +58,7 @@ namespace CRUDApi.Controllers
         // PUT: api/RefeshTokens/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRefeshToken(string id, RefeshToken refeshToken)
+        public async Task<IActionResult> PutRefeshToken(string id, RefreshToken refeshToken)
         {
             if (id != refeshToken.Id)
             {
@@ -89,7 +89,7 @@ namespace CRUDApi.Controllers
         // POST: api/RefeshTokens
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<RefeshToken>> PostRefeshToken(RefeshToken refeshToken)
+        public async Task<ActionResult<RefreshToken>> PostRefeshToken(RefreshToken refeshToken)
         {
             _context.RefeshTokens.Add(refeshToken);
             try
@@ -113,11 +113,11 @@ namespace CRUDApi.Controllers
 
         // api to sigin and generate token
         [HttpPost("Sigin")]
-        public async Task<IActionResult> Sigin([FromBody] User abtracToken)
+        public async Task<IActionResult> Sigin([FromBody] InforUser abtracToken)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            var user = await _context.Users.FirstOrDefaultAsync(t => t.usname.Equals(abtracToken.usname) && t.password.Equals(abtracToken.password));
+            var user = await _context.Users.FirstOrDefaultAsync(t => t.usename.Equals(abtracToken.usename) && t.password.Equals(abtracToken.password));
             if (user == null) return BadRequest();
 
             // create Token
@@ -125,6 +125,8 @@ namespace CRUDApi.Controllers
             // create refesh token\
             var RefreshToken = GenerateRefreshToken(user);
             await _context.RefeshTokens.AddAsync(RefreshToken);
+            await _context.SaveChangesAsync();
+
             return Ok(new SiginResultModel
             {
                 RefeshToken = RefreshToken.token,
@@ -154,7 +156,6 @@ namespace CRUDApi.Controllers
             // no need to save token, but refreshToken needed
             await _context.RefeshTokens.AddAsync(newRefreshToken);
             await _context.SaveChangesAsync();
-            await _context.SaveChangesAsync();
             return Ok(new SiginResultModel {
                  Token = jwtToken,
                  RefeshToken = newRefreshToken.token
@@ -164,39 +165,55 @@ namespace CRUDApi.Controllers
         private string GenerateToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var tokenSecret = Encoding.ASCII.GetBytes(connectionStrings.secrectKey);
+            var tokenSecret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(appSetting.secrectKey));
             var TokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[] {
-                    new Claim(ClaimTypes.Name, user.usname), // this value to display name token, should be username
+                    new Claim(ClaimTypes.Name, user.usename), // this value to display name token, should be username
                     new Claim(ClaimTypes.NameIdentifier, user.Id), // this value to distinct between evryUser token, should be userId
                     new Claim("Id", user.Id), // you can pass anything from client get
-                    new Claim(ClaimTypes.Role, ""), // if want to role permision for user passing data in here!
+                    new Claim(ClaimTypes.Role, ""), // if want to role permission for user passing data in here!
 
                 }),
                 Expires = DateTime.UtcNow.AddMinutes(15), // Expires for token current is 15 minutes
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenSecret), SecurityAlgorithms.HmacSha256Signature),
+                SigningCredentials = new SigningCredentials(tokenSecret, SecurityAlgorithms.HmacSha256),
             };
-
+            try
+            {
+                tokenHandler.CreateToken(TokenDescriptor);
+            }
+            catch(Exception error)
+            {
+                Console.Write("CreateToken failed!" + error);
+            }
             var token = tokenHandler.CreateToken(TokenDescriptor);
             return tokenHandler.WriteToken(token); // this is token string
-
         }
 
-        private RefeshToken GenerateRefreshToken(User user)
+        private RefreshToken GenerateRefreshToken(User user)
         {
             using (var rngCryptoServiceProvider = new RNGCryptoServiceProvider())
             {
                 var randomBytes = new byte[64];
                 rngCryptoServiceProvider.GetBytes(randomBytes);
-                return new RefeshToken
+                RefreshToken Result = new RefreshToken();
+                try {
+                    Result = new RefreshToken
+                    {
+                        token = Convert.ToBase64String(randomBytes),
+                        expireDate = DateTime.UtcNow.AddHours(12),
+                        createDate = DateTime.UtcNow,
+                        CreateByIp = GetIpAddress(),
+                        userId = user.Id
+                    };
+                }
+                catch(Exception error)
                 {
-                    token = Convert.ToBase64String(randomBytes),
-                    expireDate = DateTime.UtcNow.AddHours(12),
-                    createDate = DateTime.UtcNow,
-                    CreateByIp = GetIpAddress(),
-                    userId = user.Id
-                };
+                    Console.WriteLine(error);
+                }
+
+
+                return Result;
             }
         }
         // utility function get ip address with request from client

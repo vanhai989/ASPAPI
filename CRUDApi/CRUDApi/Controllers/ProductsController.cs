@@ -13,11 +13,11 @@ namespace CRUDApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    /*[EnableCors(origins: "https://localhost:3001", headers: "*", methods: "*")]*/
    
     public class ProductsController : ControllerBase
     {
         private readonly ProductContext _context;
+        private bool IsToken = false;
 
         public ProductsController(ProductContext context)
         {
@@ -28,6 +28,8 @@ namespace CRUDApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
+            if (!IsToken)
+                return BadRequest();
             return await _context.Products.ToListAsync();
         }
 
