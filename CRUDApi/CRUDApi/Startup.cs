@@ -25,6 +25,8 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Reflection;
+using System.IO;
 
 namespace CRUDApi
 {
@@ -45,7 +47,10 @@ namespace CRUDApi
                 options.AddDefaultPolicy(
                     builder => builder.AllowAnyOrigin());
             });
-          
+
+            // config swagger
+            services.AddSwaggerGen();
+
             // config appseting and get data from appSetting.json
 
             var appsetting = Configuration.GetSection("AppSetting");
@@ -60,7 +65,7 @@ namespace CRUDApi
 
             services.AddDbContext<CustomerContext>(opt =>
                                                     opt.UseSqlServer(setting.ConnectString), ServiceLifetime.Transient);
-
+           
             // this block code to validate authentication incomming resquest
             services.AddAuthentication(
                 t =>
@@ -75,8 +80,8 @@ namespace CRUDApi
                     t.SaveToken = false;
                     t.TokenValidationParameters = new TokenValidationParameters
                     {
-                        IssuerSigningKey = secrectKey, 
                         ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = secrectKey, 
                         ValidateIssuer = false,
                         ValidateAudience = false,
                         ClockSkew = TimeSpan.Zero,
@@ -93,24 +98,34 @@ namespace CRUDApi
             services.AddTransient<ICustomerRespository,CustomerRespositoryIml>();
             services.AddTransient<IProductService, ProductServiceImpl>();
             services.AddTransient<ICustomerService, CustomerServiceImpl>();
+
+            // config sender email
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             app.UseHttpsRedirection();
-
-            app.UseRouting();
-
             app.UseCors();
-
-            app.UseAuthorization();
+            app.UseSwagger(c =>
+            {
+                c.SerializeAsV2 = true;
+            });
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+            });
+            app.UseRouting();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

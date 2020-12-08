@@ -21,7 +21,7 @@ using Microsoft.Ajax.Utilities;
 
 namespace CRUDApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class RefeshTokensController : ControllerBase
     {

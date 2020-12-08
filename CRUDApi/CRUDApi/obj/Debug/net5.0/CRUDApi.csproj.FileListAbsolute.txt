@@ -716,3 +716,10 @@ D:\ASP\My_repositories\ASPAPI\CRUDApi\CRUDApi\obj\Debug\net5.0\CRUDApi.dll
 D:\ASP\My_repositories\ASPAPI\CRUDApi\CRUDApi\obj\Debug\net5.0\ref\CRUDApi.dll
 D:\ASP\My_repositories\ASPAPI\CRUDApi\CRUDApi\obj\Debug\net5.0\CRUDApi.pdb
 D:\ASP\My_repositories\ASPAPI\CRUDApi\CRUDApi\obj\Debug\net5.0\CRUDApi.genruntimeconfig.cache
+D:\ASP\My_repositories\ASPAPI\CRUDApi\CRUDApi\bin\Debug\net5.0\libman.json
+D:\ASP\My_repositories\ASPAPI\CRUDApi\CRUDApi\bin\Debug\net5.0\DocumentFormat.OpenXml.dll
+D:\ASP\My_repositories\ASPAPI\CRUDApi\CRUDApi\bin\Debug\net5.0\System.IO.Packaging.dll
+D:\ASP\My_repositories\ASPAPI\CRUDApi\CRUDApi\bin\Debug\net5.0\MailKit.dll
+D:\ASP\My_repositories\ASPAPI\CRUDApi\CRUDApi\bin\Debug\net5.0\MimeKit.dll
+D:\ASP\My_repositories\ASPAPI\CRUDApi\CRUDApi\bin\Debug\net5.0\NETCore.MailKit.dll
+D:\ASP\My_repositories\ASPAPI\CRUDApi\CRUDApi\bin\Debug\net5.0\BouncyCastle.Crypto.dll

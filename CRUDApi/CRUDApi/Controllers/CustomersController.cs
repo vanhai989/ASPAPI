@@ -11,7 +11,7 @@ using CRUDApi.Services;
 
 namespace CRUDApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase
     {

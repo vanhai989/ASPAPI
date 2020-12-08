@@ -49,6 +49,14 @@
               "target": "Package",
               "version": "[2.3.55.2, )"
             },
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[2.11.3, )"
+            },
             "IdentityServer4.Storage": {
               "target": "Package",
               "version": "[4.1.1, )"
@@ -120,6 +128,10 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
+            "NETCore.MailKit": {
+              "target": "Package",
+              "version": "[2.0.3, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
@@ -128,7 +140,19 @@
               "target": "Package",
               "version": "[7.2.1, )"
             },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.21.2, )"
+            },
             "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
               "target": "Package",
               "version": "[5.6.3, )"
             },

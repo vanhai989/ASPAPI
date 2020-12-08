@@ -7,17 +7,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CRUDApi.Models;
 using CRUDApi.Data;
-using System.Web.Http.Cors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CRUDApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
+    [Route("[controller]")]
    
     public class ProductsController : ControllerBase
     {
         private readonly ProductContext _context;
-        private bool IsToken = false;
 
         public ProductsController(ProductContext context)
         {
@@ -25,11 +25,11 @@ namespace CRUDApi.Controllers
         }
 
         // GET: api/Products
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            if (!IsToken)
-                return BadRequest();
+
             return await _context.Products.ToListAsync();
         }
 
