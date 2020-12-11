@@ -23,7 +23,6 @@ namespace CRUDApi.Controllers
             _context = context;
             _customerService = customerService;
         }
-
         // GET: api/Customers
         [HttpGet]
         public async Task<ActionResult<List<Customer>>> GetCustomers()

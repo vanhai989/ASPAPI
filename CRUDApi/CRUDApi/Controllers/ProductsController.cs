@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using CRUDApi.Models;
 using CRUDApi.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 
 namespace CRUDApi.Controllers
 {
@@ -18,18 +19,16 @@ namespace CRUDApi.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly ProductContext _context;
-
         public ProductsController(ProductContext context)
         {
             _context = context;
         }
 
         // GET: api/Products
-        
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-
             return await _context.Products.ToListAsync();
         }
 

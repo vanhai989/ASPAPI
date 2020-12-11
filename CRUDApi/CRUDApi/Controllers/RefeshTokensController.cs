@@ -17,7 +17,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SigningCredentials = Microsoft.IdentityModel.Tokens.SigningCredentials;
 using System.Security.Cryptography;
 using Polly;
-using Microsoft.Ajax.Utilities;
+using System.Net.Http;
+using System.Threading;
+using CRUDApi.Services;
+using CRUDApi.EmailHelper;
 
 namespace CRUDApi.Controllers
 {
@@ -27,17 +30,27 @@ namespace CRUDApi.Controllers
     {
         private readonly AuthDbContext _context;
         private readonly AppSetting appSetting;
-
+        EmailConfiguration emailConfiguration = new EmailConfiguration() {
+        From = "haipham@tamdongtam.vn",
+        SmtpServer = "smtp.gmail.com",
+        Port = 465,
+        Password = "haideptrai123",
+        UserName = "haipham@tamdongtam.vn"
+        };
+        private readonly EmailSender _emailSender;
         public RefeshTokensController(AuthDbContext context, IOptions<AppSetting> option)
         {
             _context = context;
             appSetting = option.Value;
+            _emailSender = new EmailSender(emailConfiguration);
         }
 
         // GET: api/RefeshTokens
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RefreshToken>>> GetRefeshTokens()
         {
+            var message = new Message(new string[] { "zorocamiiu@gmail.com" }, "Test email", "This is the content from our email.");
+            _emailSender.SendEmail(message);
             return await _context.RefeshTokens.ToListAsync();
         }
 

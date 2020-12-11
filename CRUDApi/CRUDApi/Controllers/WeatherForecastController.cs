@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CRUDApi.EmailHelper;
+using CRUDApi.Models;
+using CRUDApi.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -17,12 +20,10 @@ namespace CRUDApi.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
         }
-
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
@@ -35,5 +36,7 @@ namespace CRUDApi.Controllers
             })
             .ToArray();
         }
+
+        
     }
 }

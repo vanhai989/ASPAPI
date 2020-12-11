@@ -14,9 +14,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using CRUDApi.Models;
 using CRUDApi.Data;
-using System.Web.Http;
-using System.Web.Mvc;
-using Amazon.EC2.Model;
 using CRUDApi.Respository;
 using CRUDApi.Respository.Impl;
 using CRUDApi.Services;
@@ -89,7 +86,7 @@ namespace CRUDApi
                     };
                 });
 
-           /* services.AddMvc();*/
+            /* services.AddMvc();*/
             // config response returned from server is camel case
             services.AddControllers().AddNewtonsoftJson(t => t.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
@@ -100,13 +97,16 @@ namespace CRUDApi
             services.AddTransient<ICustomerService, CustomerServiceImpl>();
 
             // config sender email
+            var emailConfig = Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
+            services.AddSingleton(emailConfig);
+
+            services.AddScoped<IEmailSender, EmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
-            app.UseHttpsRedirection();
+            
             app.UseCors();
             app.UseSwagger(c =>
             {
