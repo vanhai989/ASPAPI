@@ -9,6 +9,6 @@ namespace CRUDApi.Services
 {
     interface IEmailSender
     {
-        void SendEmail(Message message);
+        Task SendEmail(Message message);
     }
 }

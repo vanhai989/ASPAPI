@@ -30,30 +30,19 @@ namespace CRUDApi.Controllers
     {
         private readonly AuthDbContext _context;
         private readonly AppSetting appSetting;
-        EmailConfiguration emailConfiguration = new EmailConfiguration() {
-        From = "haipham@tamdongtam.vn",
-        SmtpServer = "smtp.gmail.com",
-        Port = 465,
-        Password = "haideptrai123",
-        UserName = "haipham@tamdongtam.vn"
-        };
-        private readonly EmailSender _emailSender;
         public RefeshTokensController(AuthDbContext context, IOptions<AppSetting> option)
         {
             _context = context;
             appSetting = option.Value;
-            _emailSender = new EmailSender(emailConfiguration);
         }
 
         // GET: api/RefeshTokens
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RefreshToken>>> GetRefeshTokens()
         {
-            var message = new Message(new string[] { "zorocamiiu@gmail.com" }, "Test email", "This is the content from our email.");
-            _emailSender.SendEmail(message);
+           
             return await _context.RefeshTokens.ToListAsync();
         }
-
         // GET: api/RefeshTokens/5
         [HttpGet("{id}")]
         public async Task<ActionResult<RefreshToken>> GetRefeshToken(string id)
@@ -66,37 +55,6 @@ namespace CRUDApi.Controllers
             }
 
             return refeshToken;
-        }
-
-        // PUT: api/RefeshTokens/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRefeshToken(string id, RefreshToken refeshToken)
-        {
-            if (id != refeshToken.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(refeshToken).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RefeshTokenExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
         }
 
         // POST: api/RefeshTokens
@@ -240,23 +198,6 @@ namespace CRUDApi.Controllers
         if (string.IsNullOrEmpty(ip)) return "";
         else return ip.Split(":")[0];
     }
-
-
-    // DELETE: api/RefeshTokens/5
-    [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRefeshToken(string id)
-        {
-            var refeshToken = await _context.RefeshTokens.FindAsync(id);
-            if (refeshToken == null)
-            {
-                return NotFound();
-            }
-
-            _context.RefeshTokens.Remove(refeshToken);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
 
         private bool RefeshTokenExists(string id)
         {

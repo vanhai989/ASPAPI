@@ -18,16 +18,17 @@ namespace CRUDApi.Services
     public class EmailSender : IEmailSender
     {
         private readonly EmailConfiguration _emailConfig;
-        public EmailSender(EmailConfiguration emailConfig)
+        public EmailSender(IOptions<EmailConfiguration> option)
         {
-            _emailConfig = emailConfig;
+            _emailConfig = option.Value;
         }
 
         [Obsolete]
-        public void SendEmail(Message message)
+        public Task SendEmail(Message message)
         {
             var emailMessage = CreateEmailMessage(message);
             Send(emailMessage);
+            return Task.CompletedTask;
         }
 
         [Obsolete]

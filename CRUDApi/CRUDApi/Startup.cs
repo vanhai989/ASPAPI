@@ -53,6 +53,12 @@ namespace CRUDApi
             var appsetting = Configuration.GetSection("AppSetting");
             services.Configure<AppSetting>(appsetting);
             var setting = appsetting.Get<AppSetting>();
+
+            // config sender email
+            var emailConfig = Configuration.GetSection("EmailConfiguration");
+            services.Configure<EmailConfiguration>(emailConfig);
+            services.AddSingleton(emailConfig);
+
             var secrectKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(setting.secrectKey));
 
             services.AddDbContext<AuthDbContext>(opt => opt.UseLazyLoadingProxies().UseSqlServer(setting.ConnectString), ServiceLifetime.Scoped);
@@ -62,7 +68,9 @@ namespace CRUDApi
 
             services.AddDbContext<CustomerContext>(opt =>
                                                     opt.UseSqlServer(setting.ConnectString), ServiceLifetime.Transient);
-           
+
+            services.AddDbContext<EmailContext>(opt =>
+                                                     opt.UseSqlServer(setting.ConnectString), ServiceLifetime.Transient);
             // this block code to validate authentication incomming resquest
             services.AddAuthentication(
                 t =>
@@ -95,11 +103,6 @@ namespace CRUDApi
             services.AddTransient<ICustomerRespository,CustomerRespositoryIml>();
             services.AddTransient<IProductService, ProductServiceImpl>();
             services.AddTransient<ICustomerService, CustomerServiceImpl>();
-
-            // config sender email
-            var emailConfig = Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
-            services.AddSingleton(emailConfig);
-
             services.AddScoped<IEmailSender, EmailSender>();
         }
 

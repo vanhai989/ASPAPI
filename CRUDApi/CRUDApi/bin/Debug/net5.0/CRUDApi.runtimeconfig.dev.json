@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\haiph\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\haiph\\.nuget\\packages",
+      "C:\\Users\\haide\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\haide\\.nuget\\packages",
       "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\Offline Packages"
     ]
   }
