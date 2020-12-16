@@ -1,9 +1,5 @@
-﻿using CRUDApi.Models;
+﻿using CRUDApi.Models.AuthModels;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CRUDApi.Data
 {
@@ -17,7 +13,7 @@ namespace CRUDApi.Data
         // cấu hình key giữa user với refeshToken
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<RefreshToken>().HasOne(e => e.User).WithMany(e => e.RefeshTokens).HasForeignKey(e => e.userId).OnDelete(DeleteBehavior.ClientCascade);
+            modelBuilder.Entity<RefreshToken>().HasOne(e => e.User).WithMany(e => e.RefeshTokens).HasForeignKey(e => e.UserId).OnDelete(DeleteBehavior.ClientCascade);
             base.OnModelCreating(modelBuilder);
         }
     }

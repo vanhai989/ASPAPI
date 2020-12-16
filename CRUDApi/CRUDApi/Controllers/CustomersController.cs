@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CRUDApi.Data;
-using CRUDApi.Models;
 using CRUDApi.Services;
+using CRUDApi.Models.CustomerModels;
 
 namespace CRUDApi.Controllers
 {
@@ -15,7 +15,7 @@ namespace CRUDApi.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        private ICustomerService _customerService;
+        private readonly ICustomerService _customerService;
         private readonly CustomerContext _context;
 
         public CustomersController(CustomerContext context, ICustomerService customerService)
@@ -49,7 +49,7 @@ namespace CRUDApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCustomer(int id, Customer customer)
         {
-            if (id != customer.customerId)
+            if (id != customer.CustomerId)
             {
                 return BadRequest();
             }
@@ -83,7 +83,7 @@ namespace CRUDApi.Controllers
             _context.Customers.Add(customer);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCustomer", new { id = customer.customerId }, customer);
+            return CreatedAtAction("GetCustomer", new { id = customer.CustomerId }, customer);
         }
 
         // DELETE: api/Customers/5
@@ -104,7 +104,7 @@ namespace CRUDApi.Controllers
 
         private bool CustomerExists(int id)
         {
-            return _context.Customers.Any(e => e.customerId == id);
+            return _context.Customers.Any(e => e.CustomerId == id);
         }
     }
 }

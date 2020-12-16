@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CRUDApi.Data;
-using CRUDApi.Models;
 using CRUDApi.Services;
 using Microsoft.Extensions.Options;
 using CRUDApi.EmailHelper;
+using CRUDApi.Models.EmailModels;
 
 namespace CRUDApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class EmailModelsController : ControllerBase
     {
@@ -50,7 +50,6 @@ namespace CRUDApi.Controllers
         //post to Email
 
         [HttpPost("send_email")]
-
         public async Task<ActionResult> Sender(EmailModel emailModelP)
         {
             if (!ModelState.IsValid) return BadRequest();
@@ -62,5 +61,18 @@ namespace CRUDApi.Controllers
 
             return NoContent();
         }
+
+        /*[HttpPost("Forgot-password")]
+        public async Task<ActionResult> SendForgotPassword(EmailModel emailModelP)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            _context.EmailModels.Add(emailModelP);
+            await _context.SaveChangesAsync();
+
+            var message = new Message(new string[] { emailModelP.Email }, "Test email", "This is the content from our email.");
+            await _emailSender.SendEmail(message);
+
+            return NoContent();
+        }*/
     }
 }

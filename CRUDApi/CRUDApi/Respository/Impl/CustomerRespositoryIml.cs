@@ -1,6 +1,6 @@
 ﻿
 using CRUDApi.Data;
-using CRUDApi.Models;
+using CRUDApi.Models.CustomerModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace CRUDApi.Respository.Impl
 {
     public class CustomerRespositoryIml : ICustomerRespository
     {
-        private CustomerContext _DataContext;
+        private readonly CustomerContext _DataContext;
 
         public CustomerRespositoryIml(CustomerContext dataContext)
         {
@@ -25,7 +25,7 @@ namespace CRUDApi.Respository.Impl
         {
                return Task.Run(() =>
                {
-                   var result = _DataContext.Customers.Where(e => e.gender == _gender);
+                   var result = _DataContext.Customers.Where(e => e.Gender == _gender);
                    return result.ToList();
                });
         }

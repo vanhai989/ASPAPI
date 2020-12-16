@@ -9,10 +9,11 @@ using CRUDApi.Models;
 using CRUDApi.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using CRUDApi.Models.ProductModes;
 
 namespace CRUDApi.Controllers
 {
-    [Authorize]
+    /*[Authorize]*/
     [ApiController]
     [Route("[controller]")]
    
@@ -49,7 +50,7 @@ namespace CRUDApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
         {
-            if (id != product.productId)
+            if (id != product.ProductId)
             {
                 return BadRequest();
             }
@@ -83,7 +84,7 @@ namespace CRUDApi.Controllers
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetProduct), new { id = product.productId }, product);
+            return CreatedAtAction(nameof(GetProduct), new { id = product.ProductId }, product);
         }
 
         // DELETE: api/Products/5
@@ -104,7 +105,7 @@ namespace CRUDApi.Controllers
 
         private bool ProductExists(int id)
         {
-            return _context.Products.Any(e => e.productId == id);
+            return _context.Products.Any(e => e.ProductId == id);
         }
     }
 }

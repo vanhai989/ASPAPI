@@ -1,18 +1,13 @@
-﻿using CRUDApi.Data;
-using CRUDApi.Models;
+﻿using CRUDApi.Models.CustomerModels;
 using CRUDApi.Respository;
-using CRUDApi.Respository.Impl;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CRUDApi.Services.Impl
 {
     public class CustomerServiceImpl : ICustomerService
     {
-        private ICustomerRespository customerRespository;
+        private readonly ICustomerRespository customerRespository;
 
         public CustomerServiceImpl(ICustomerRespository _customerRespository)
         {

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\haide\\Desktop\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj": {}
+    "D:\\ASP\\My_repositories\\ASPAPI\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\haide\\Desktop\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj": {
+    "D:\\ASP\\My_repositories\\ASPAPI\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\haide\\Desktop\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj",
+        "projectUniqueName": "D:\\ASP\\My_repositories\\ASPAPI\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj",
         "projectName": "CRUDApi",
-        "projectPath": "C:\\Users\\haide\\Desktop\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj",
-        "packagesPath": "C:\\Users\\haide\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\haide\\Desktop\\ASPAPI\\CRUDApi\\CRUDApi\\obj\\",
+        "projectPath": "D:\\ASP\\My_repositories\\ASPAPI\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj",
+        "packagesPath": "C:\\Users\\haiph\\.nuget\\packages\\",
+        "outputPath": "D:\\ASP\\My_repositories\\ASPAPI\\ASPAPI\\CRUDApi\\CRUDApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\Offline Packages"
         ],
         "configFilePaths": [
-          "C:\\Users\\haide\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\haiph\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -45,10 +45,6 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "DocumentFormat.OpenXml": {
-              "target": "Package",
-              "version": "[2.11.3, )"
-            },
             "IdentityServer4.Storage": {
               "target": "Package",
               "version": "[4.1.1, )"
@@ -175,7 +171,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

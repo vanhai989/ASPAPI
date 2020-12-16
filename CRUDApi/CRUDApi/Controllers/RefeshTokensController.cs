@@ -6,21 +6,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CRUDApi.Data;
-using CRUDApi.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.Extensions.Options;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SigningCredentials = Microsoft.IdentityModel.Tokens.SigningCredentials;
 using System.Security.Cryptography;
-using Polly;
-using System.Net.Http;
-using System.Threading;
-using CRUDApi.Services;
-using CRUDApi.EmailHelper;
+using CRUDApi.Models.AuthModels;
 
 namespace CRUDApi.Controllers
 {
@@ -84,11 +77,11 @@ namespace CRUDApi.Controllers
 
         // api to sigin and generate token
         [HttpPost("Sigin")]
-        public async Task<IActionResult> Sigin([FromBody] InforUser abtracToken)
+        public async Task<IActionResult> Sigin([FromBody] InforUser inforUser)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            var user = await _context.Users.FirstOrDefaultAsync(t => t.usename.Equals(abtracToken.usename) && t.password.Equals(abtracToken.password));
+            var user = await _context.Users.FirstOrDefaultAsync(t => t.Usename.Equals(inforUser.Usename) && t.Password.Equals(inforUser.Password));
             if (user == null) return BadRequest();
 
             // create Token
@@ -100,7 +93,7 @@ namespace CRUDApi.Controllers
 
             return Ok(new SiginResultModel
             {
-                RefeshToken = RefreshToken.token,
+                RefeshToken = RefreshToken.Token,
                 Token = jwtToken
             });
         }
@@ -114,10 +107,10 @@ namespace CRUDApi.Controllers
             // get ipAdress for request
             var ipAddress = GetIpAddress();
 
-            var domain = await _context.RefeshTokens.FirstOrDefaultAsync(t => t.token.Equals(requestToken.Token) && t.CreateByIp.Equals(ipAddress));
+            var domain = await _context.RefeshTokens.FirstOrDefaultAsync(t => t.Token.Equals(requestToken.Token) && t.CreateByIp.Equals(ipAddress));
             if (domain == null) return BadRequest();
             // revoke current refreshToken 
-            domain.revokedDate = DateTime.Now;
+            domain.RevokedDate = DateTime.Now;
             await _context.SaveChangesAsync();
 
             // generate new token and new refreshToken
@@ -129,18 +122,18 @@ namespace CRUDApi.Controllers
             await _context.SaveChangesAsync();
             return Ok(new SiginResultModel {
                  Token = jwtToken,
-                 RefeshToken = newRefreshToken.token
+                 RefeshToken = newRefreshToken.Token
             });
         }
 
         private string GenerateToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var tokenSecret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(appSetting.secrectKey));
+            var tokenSecret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(appSetting.SecrectKey));
             var TokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[] {
-                    new Claim(ClaimTypes.Name, user.usename), // this value to display name token, should be username
+                    new Claim(ClaimTypes.Name, user.Usename), // this value to display name token, should be username
                     new Claim(ClaimTypes.NameIdentifier, user.Id), // this value to distinct between evryUser token, should be userId
                     new Claim("Id", user.Id), // you can pass anything from client get
                     new Claim(ClaimTypes.Role, ""), // if want to role permission for user passing data in here!
@@ -163,29 +156,28 @@ namespace CRUDApi.Controllers
 
         private RefreshToken GenerateRefreshToken(User user)
         {
-            using (var rngCryptoServiceProvider = new RNGCryptoServiceProvider())
+            using var rngCryptoServiceProvider = new RNGCryptoServiceProvider();
+            var randomBytes = new byte[64];
+            rngCryptoServiceProvider.GetBytes(randomBytes);
+            RefreshToken Result = new RefreshToken();
+            try
             {
-                var randomBytes = new byte[64];
-                rngCryptoServiceProvider.GetBytes(randomBytes);
-                RefreshToken Result = new RefreshToken();
-                try {
-                    Result = new RefreshToken
-                    {
-                        token = Convert.ToBase64String(randomBytes),
-                        expireDate = DateTime.UtcNow.AddHours(12),
-                        createDate = DateTime.UtcNow,
-                        CreateByIp = GetIpAddress(),
-                        userId = user.Id
-                    };
-                }
-                catch(Exception error)
+                Result = new RefreshToken
                 {
-                    Console.WriteLine(error);
-                }
-
-
-                return Result;
+                    Token = Convert.ToBase64String(randomBytes),
+                    ExpireDate = DateTime.UtcNow.AddHours(12),
+                    CreateDate = DateTime.UtcNow,
+                    CreateByIp = GetIpAddress(),
+                    UserId = user.Id
+                };
             }
+            catch (Exception error)
+            {
+                Console.WriteLine(error);
+            }
+
+
+            return Result;
         }
         // utility function get ip address with request from client
     private string GetIpAddress()

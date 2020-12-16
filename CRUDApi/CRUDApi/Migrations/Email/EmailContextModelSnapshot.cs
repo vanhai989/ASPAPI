@@ -21,24 +21,18 @@ namespace CRUDApi.Migrations.Email
 
             modelBuilder.Entity("CRUDApi.Models.EmailModel", b =>
                 {
-                    b.Property<string>("Subject")
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("body")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("createDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Subject");
+                    b.HasKey("Email");
 
-                    b.ToTable("EmailHistory");
+                    b.ToTable("EmailSender");
                 });
 #pragma warning restore 612, 618
         }

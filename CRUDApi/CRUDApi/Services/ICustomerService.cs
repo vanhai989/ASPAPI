@@ -1,10 +1,6 @@
-﻿using CRUDApi.Data;
-using CRUDApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using CRUDApi.Models.CustomerModels;
 
 namespace CRUDApi.Services
 {

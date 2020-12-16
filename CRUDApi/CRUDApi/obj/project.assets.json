@@ -23,18 +23,6 @@
           "lib/netstandard1.5/Castle.Core.dll": {}
         }
       },
-      "DocumentFormat.OpenXml/2.11.3": {
-        "type": "package",
-        "dependencies": {
-          "System.IO.Packaging": "4.7.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/DocumentFormat.OpenXml.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/DocumentFormat.OpenXml.dll": {}
-        }
-      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -2211,15 +2199,6 @@
           "lib/netstandard1.3/System.IO.FileSystem.Primitives.dll": {}
         }
       },
-      "System.IO.Packaging/4.7.0": {
-        "type": "package",
-        "compile": {
-          "ref/netstandard2.0/System.IO.Packaging.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.IO.Packaging.dll": {}
-        }
-      },
       "System.Linq/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3312,28 +3291,6 @@
         "lib/netstandard1.5/Castle.Core.dll",
         "lib/netstandard1.5/Castle.Core.xml",
         "readme.txt"
-      ]
-    },
-    "DocumentFormat.OpenXml/2.11.3": {
-      "sha512": "dCugN386ka+LwcOHnxi4gUHbiDeIw0/GEYw1sXFhYiErGFbJpRpscRcn5b12dywUReFCOgGNJ/l16zG5udkC/A==",
-      "type": "package",
-      "path": "documentformat.openxml/2.11.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "documentformat.openxml.2.11.3.nupkg.sha512",
-        "documentformat.openxml.nuspec",
-        "icon.png",
-        "lib/net35/DocumentFormat.OpenXml.dll",
-        "lib/net35/DocumentFormat.OpenXml.xml",
-        "lib/net40/DocumentFormat.OpenXml.dll",
-        "lib/net40/DocumentFormat.OpenXml.xml",
-        "lib/net46/DocumentFormat.OpenXml.dll",
-        "lib/net46/DocumentFormat.OpenXml.xml",
-        "lib/netstandard1.3/DocumentFormat.OpenXml.dll",
-        "lib/netstandard1.3/DocumentFormat.OpenXml.xml",
-        "lib/netstandard2.0/DocumentFormat.OpenXml.dll",
-        "lib/netstandard2.0/DocumentFormat.OpenXml.xml"
       ]
     },
     "Humanizer.Core/2.8.26": {
@@ -7326,33 +7283,6 @@
         "system.io.filesystem.primitives.nuspec"
       ]
     },
-    "System.IO.Packaging/4.7.0": {
-      "sha512": "9VV4KAbgRQZ79iEoG40KIeZy38O30oWwewScAST879+oki8g/Wa2HXZQgrhDDxQM4GkP1PnRJll05NMiVPbYAw==",
-      "type": "package",
-      "path": "system.io.packaging/4.7.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net46/System.IO.Packaging.dll",
-        "lib/net46/System.IO.Packaging.xml",
-        "lib/netstandard1.3/System.IO.Packaging.dll",
-        "lib/netstandard1.3/System.IO.Packaging.xml",
-        "lib/netstandard2.0/System.IO.Packaging.dll",
-        "lib/netstandard2.0/System.IO.Packaging.xml",
-        "ref/net46/System.IO.Packaging.dll",
-        "ref/net46/System.IO.Packaging.xml",
-        "ref/netstandard1.3/System.IO.Packaging.dll",
-        "ref/netstandard1.3/System.IO.Packaging.xml",
-        "ref/netstandard2.0/System.IO.Packaging.dll",
-        "ref/netstandard2.0/System.IO.Packaging.xml",
-        "system.io.packaging.4.7.0.nupkg.sha512",
-        "system.io.packaging.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
     "System.Linq/4.3.0": {
       "sha512": "5DbqIUpsDp0dFftytzuMmc0oeMdQwjcP/EWxsksIz/w1TcFRkZ3yKKz0PqiYFMmEwPSWw+qNVqD7PJ889JzHbw==",
       "type": "package",
@@ -10442,7 +10372,6 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "DocumentFormat.OpenXml >= 2.11.3",
       "IdentityServer4.Storage >= 4.1.1",
       "MailKit >= 2.10.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.1",
@@ -10471,23 +10400,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\haide\\.nuget\\packages\\": {},
+    "C:\\Users\\haiph\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\Offline Packages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\haide\\Desktop\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj",
+      "projectUniqueName": "D:\\ASP\\My_repositories\\ASPAPI\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj",
       "projectName": "CRUDApi",
-      "projectPath": "C:\\Users\\haide\\Desktop\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj",
-      "packagesPath": "C:\\Users\\haide\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\haide\\Desktop\\ASPAPI\\CRUDApi\\CRUDApi\\obj\\",
+      "projectPath": "D:\\ASP\\My_repositories\\ASPAPI\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj",
+      "packagesPath": "C:\\Users\\haiph\\.nuget\\packages\\",
+      "outputPath": "D:\\ASP\\My_repositories\\ASPAPI\\ASPAPI\\CRUDApi\\CRUDApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\Offline Packages"
       ],
       "configFilePaths": [
-        "C:\\Users\\haide\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\haiph\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.2.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -10515,10 +10444,6 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
-          "DocumentFormat.OpenXml": {
-            "target": "Package",
-            "version": "[2.11.3, )"
-          },
           "IdentityServer4.Storage": {
             "target": "Package",
             "version": "[4.1.1, )"
@@ -10645,7 +10570,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,18 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CRUDApi.Models;
 using CRUDApi.Data;
 using CRUDApi.Respository;
 using CRUDApi.Respository.Impl;
@@ -21,8 +12,9 @@ using CRUDApi.Services.Impl;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.Reflection;
+using CRUDApi.Models.AuthModels;
+using CRUDApi.Models.EmailModels;
+using Microsoft.Extensions.FileProviders;
 using System.IO;
 
 namespace CRUDApi
@@ -33,7 +25,6 @@ namespace CRUDApi
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -59,18 +50,28 @@ namespace CRUDApi
             services.Configure<EmailConfiguration>(emailConfig);
             services.AddSingleton(emailConfig);
 
-            var secrectKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(setting.secrectKey));
+            var secrectKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(setting.SecrectKey));
 
-            services.AddDbContext<AuthDbContext>(opt => opt.UseLazyLoadingProxies().UseSqlServer(setting.ConnectString), ServiceLifetime.Scoped);
+            services.AddDbContext<AuthDbContext>(opt => 
+            opt.UseLazyLoadingProxies().UseSqlServer(setting.ConnectString), ServiceLifetime.Scoped);
 
             services.AddDbContext<ProductContext>(opt =>
-                                                  opt.UseSqlServer(setting.ConnectString), ServiceLifetime.Transient);
+            opt.UseSqlServer(setting.ConnectString), ServiceLifetime.Transient);
 
             services.AddDbContext<CustomerContext>(opt =>
-                                                    opt.UseSqlServer(setting.ConnectString), ServiceLifetime.Transient);
+            opt.UseSqlServer(setting.ConnectString), ServiceLifetime.Transient);
 
             services.AddDbContext<EmailContext>(opt =>
-                                                     opt.UseSqlServer(setting.ConnectString), ServiceLifetime.Transient);
+            opt.UseSqlServer(setting.ConnectString), ServiceLifetime.Transient);
+
+            services.AddDbContext<ForgotPasswordContext>(opt =>
+            opt.UseSqlServer(setting.ConnectString), ServiceLifetime.Transient);
+
+            services.AddDbContext<ConfirmActionContext>(opt =>
+            opt.UseSqlServer(setting.ConnectString), ServiceLifetime.Transient);
+
+            services.AddDbContext<FormFileContext>(opt =>
+            opt.UseSqlServer(setting.ConnectString), ServiceLifetime.Transient);
             // this block code to validate authentication incomming resquest
             services.AddAuthentication(
                 t =>
@@ -109,17 +110,28 @@ namespace CRUDApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            
+            /*app.UseCors(options => options.WithOrigins("http://localhost:3000")
+                .AllowAnyMethod()
+                .AllowAnyHeader());*/
+
             app.UseCors();
             app.UseSwagger(c =>
             {
                 c.SerializeAsV2 = true;
             });
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Images")),
+                RequestPath = "/Images"
+            });
+
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 c.RoutePrefix = string.Empty;
             });
+            app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

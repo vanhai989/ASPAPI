@@ -1,4 +1,4 @@
-﻿using CRUDApi.Models;
+﻿using CRUDApi.Models.EmailModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
