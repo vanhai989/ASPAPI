@@ -1,4 +1,4 @@
-﻿using CRUDApi.Models.CustomerModels;
+﻿using CRUDApi.Models.Customers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,8 +6,6 @@ namespace CRUDApi.Respository
 {
     public interface ICustomerRespository
     {
-        int CountProduct();
-
-        Task<List<Customer>> GetProducts(string _gender);
+        Task<List<Customer>> GetCustomers(string _gender);
     }
 }

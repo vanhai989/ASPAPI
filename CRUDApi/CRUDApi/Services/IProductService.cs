@@ -1,12 +1,13 @@
-﻿using System;
+﻿using CRUDApi.Models.Products;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace CRUDApi.Services
 {
-    interface IProductService
+    public interface IProductService
     {
-        int CountProducts();
+        Task<List<Product>> GetProducts(string nameProduct);
     }
 }

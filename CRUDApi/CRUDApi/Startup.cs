@@ -30,6 +30,7 @@ namespace CRUDApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
@@ -100,16 +101,19 @@ namespace CRUDApi
             services.AddControllers().AddNewtonsoftJson(t => t.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             // serviceDependencyInjection
-            services.AddTransient<IProductRespository, ProductRespositoryIml>();
-            services.AddTransient<ICustomerRespository,CustomerRespositoryIml>();
-            services.AddTransient<IProductService, ProductServiceImpl>();
+            services.AddTransient<Services.IProductService, ProductServiceImpl>();
+            services.AddTransient<Respository.IProductRespository, ProductRespositoryImpl>();
             services.AddTransient<ICustomerService, CustomerServiceImpl>();
+            services.AddTransient<ICustomerRespository,CustomerRespositoryImpl>();
             services.AddScoped<IEmailSender, EmailSender>();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            #region
             /*app.UseCors(options => options.WithOrigins("http://localhost:3000")
                 .AllowAnyMethod()
                 .AllowAnyHeader());*/
@@ -140,6 +144,7 @@ namespace CRUDApi
             {
                 endpoints.MapControllers();
             });
+            #endregion
 
         }
     }

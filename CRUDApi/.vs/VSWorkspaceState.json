@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\CRUDApi",
+    "\\unit-testing-using-dotnet-test",
+    "\\unit-testing-using-dotnet-test\\PrimeService",
+    "\\unit-testing-using-dotnet-test\\PrimeService.Tests",
+    "\\unit-testing-using-dotnet-test\\PrimeService.Tests\\bin",
+    "\\unit-testing-using-dotnet-test\\PrimeService.Tests\\obj",
+    "\\unit-testing-using-dotnet-test\\PrimeService.Tests\\obj\\Release"
+  ],
+  "SelectedNode": "\\unit-testing-using-dotnet-test\\PrimeService.Tests\\PrimeService_IsPrimeShould.cs",
+  "PreviewInSolutionExplorer": false
+}

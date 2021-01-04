@@ -38,6 +38,7 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "5.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.1",
+          "Moq": "4.15.2",
           "NETCore.MailKit": "2.0.3",
           "Newtonsoft.Json": "12.0.3",
           "Polly": "7.2.1",
@@ -1372,6 +1373,21 @@
         },
         "compile": {
           "lib/netstandard2.0/MimeKit.dll": {}
+        }
+      },
+      "Moq/4.15.2": {
+        "dependencies": {
+          "Castle.Core": "4.4.1",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Moq.dll": {
+            "assemblyVersion": "4.15.0.0",
+            "fileVersion": "4.15.2.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Moq.dll": {}
         }
       },
       "NETCore.MailKit/2.0.3": {
@@ -4946,6 +4962,13 @@
       "sha512": "sha512-AHbCxNo6Ue98q/r81TKdCisRJSOv5EF0PWctUqhtzjDJx3xeTxguxZHyZy3ATbHfHFDRVR7TeZgmsfRP7dXs6g==",
       "path": "mimekit/2.10.0",
       "hashPath": "mimekit.2.10.0.nupkg.sha512"
+    },
+    "Moq/4.15.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wegOsLAWslb4Qm/ER1hl7pd9M5fiolsnSVEZuNZgVl8iVGm/PRHXrLY/2YCnFmNHnMiX3X/+em404mGZi2ofQw==",
+      "path": "moq/4.15.2",
+      "hashPath": "moq.4.15.2.nupkg.sha512"
     },
     "NETCore.MailKit/2.0.3": {
       "type": "package",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OkYm+LTimc/Jg2/BxUvkvNuuHuH+cz4vHflW4ODb+bNLgqSaqlsz5sZhXYumk12iKm8GoN//e+Kz5H/UBGJ5Pg==",
+  "dgSpecHash": "wXsaMSjXkUZEj7LEzweLvqnwf6DRcWg8XTF0XdbidYehAcRXDfdHT4UMY0uzWEVZrdtcDzkM7xkKgBNxuYIuRg==",
   "success": true,
   "projectFilePath": "D:\\ASP\\My_repositories\\ASPAPI\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj",
   "expectedPackageFiles": [
@@ -78,6 +78,7 @@
     "C:\\Users\\haiph\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\haiph\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\haiph\\.nuget\\packages\\mimekit\\2.10.0\\mimekit.2.10.0.nupkg.sha512",
+    "C:\\Users\\haiph\\.nuget\\packages\\moq\\4.15.2\\moq.4.15.2.nupkg.sha512",
     "C:\\Users\\haiph\\.nuget\\packages\\netcore.mailkit\\2.0.3\\netcore.mailkit.2.0.3.nupkg.sha512",
     "C:\\Users\\haiph\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\haiph\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",

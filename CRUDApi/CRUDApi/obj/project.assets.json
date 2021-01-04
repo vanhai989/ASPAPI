@@ -1171,6 +1171,19 @@
           "lib/netstandard2.0/MimeKit.dll": {}
         }
       },
+      "Moq/4.15.2": {
+        "type": "package",
+        "dependencies": {
+          "Castle.Core": "4.4.0",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/Moq.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Moq.dll": {}
+        }
+      },
       "NETCore.MailKit/2.0.3": {
         "type": "package",
         "dependencies": {
@@ -5199,6 +5212,22 @@
         "mimekit.nuspec"
       ]
     },
+    "Moq/4.15.2": {
+      "sha512": "wegOsLAWslb4Qm/ER1hl7pd9M5fiolsnSVEZuNZgVl8iVGm/PRHXrLY/2YCnFmNHnMiX3X/+em404mGZi2ofQw==",
+      "type": "package",
+      "path": "moq/4.15.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Moq.dll",
+        "lib/net45/Moq.xml",
+        "lib/netstandard2.0/Moq.dll",
+        "lib/netstandard2.0/Moq.xml",
+        "moq.4.15.2.nupkg.sha512",
+        "moq.nuspec",
+        "moq.png"
+      ]
+    },
     "NETCore.MailKit/2.0.3": {
       "sha512": "5V4N3S9soQLBemj2+u4TvIbSfJP1Hs/iV7TCJuBc913lD9OoZ+7Lne4eA90F292OLZ2iBQJzXttAvfYgIYWnFg==",
       "type": "package",
@@ -5252,8 +5281,7 @@
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "newtonsoft.json.12.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
-        "packageIcon.png",
-        "paket-installmodel.cache"
+        "packageIcon.png"
       ]
     },
     "Newtonsoft.Json.Bson/1.0.2": {
@@ -5820,7 +5848,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -6471,7 +6498,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -6869,7 +6895,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -7035,7 +7060,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -7306,7 +7330,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -7379,7 +7402,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -7727,7 +7749,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -7827,7 +7848,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -8034,7 +8054,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -8116,7 +8135,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -8238,7 +8256,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -8665,7 +8682,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll",
@@ -9583,7 +9599,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -9867,7 +9882,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -9937,7 +9951,6 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "paket-installmodel.cache",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/net45/_._",
@@ -10385,6 +10398,7 @@
       "Microsoft.EntityFrameworkCore.Sqlite >= 5.0.1",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.1",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.1",
+      "Moq >= 4.15.2",
       "NETCore.MailKit >= 2.0.3",
       "Newtonsoft.Json >= 12.0.3",
       "Polly >= 7.2.1",
@@ -10502,6 +10516,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[5.0.1, )"
+          },
+          "Moq": {
+            "target": "Package",
+            "version": "[4.15.2, )"
           },
           "NETCore.MailKit": {
             "target": "Package",

@@ -1,4 +1,4 @@
-﻿using CRUDApi.Models.CustomerModels;
+﻿using CRUDApi.Models.Customers;
 using CRUDApi.Respository;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,15 +12,11 @@ namespace CRUDApi.Services.Impl
         public CustomerServiceImpl(ICustomerRespository _customerRespository)
         {
             customerRespository = _customerRespository;
-        }
-        public int CountProducts()
-        {
-            return 1;
-        }
+        } 
 
-        public async Task<List<Customer>> GetProducts(string limit)
+        public async Task<List<Customer>> GetCustomers(string limit)
         {
-            return await customerRespository.GetProducts(limit);
+            return await customerRespository.GetCustomers(limit);
         }
        
     }

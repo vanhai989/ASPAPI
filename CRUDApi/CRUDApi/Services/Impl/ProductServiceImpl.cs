@@ -1,4 +1,8 @@
-﻿using System;
+﻿using CRUDApi.Data;
+using CRUDApi.Models.Products;
+using CRUDApi.Respository;
+using CRUDApi.Respository.Impl;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,9 +11,15 @@ namespace CRUDApi.Services.Impl
 {
     public class ProductServiceImpl : IProductService
     {
-        public int CountProducts()
+        private readonly Respository.IProductRespository productRespository;
+
+        public ProductServiceImpl(Respository.IProductRespository _productRespositoryIml)
         {
-            return 0;
+            productRespository = _productRespositoryIml;
+        }
+        public async Task<List<Product>> GetProducts(string nameProduct)
+        {
+            return await productRespository.GetProducts(nameProduct);
         }
     }
 }

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDApi", "CRUDApi\CRUDApi.csproj", "{189B03E4-F6C3-4263-8D0A-60AF7D2CDC3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDApi", "CRUDApi\CRUDApi.csproj", "{189B03E4-F6C3-4263-8D0A-60AF7D2CDC3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestProjectCRUD", "XUnitTestProjectCRUD\XUnitTestProjectCRUD.csproj", "{F0520834-9D81-4191-85D8-FF5CCC2EEAD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{189B03E4-F6C3-4263-8D0A-60AF7D2CDC3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{189B03E4-F6C3-4263-8D0A-60AF7D2CDC3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{189B03E4-F6C3-4263-8D0A-60AF7D2CDC3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0520834-9D81-4191-85D8-FF5CCC2EEAD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0520834-9D81-4191-85D8-FF5CCC2EEAD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0520834-9D81-4191-85D8-FF5CCC2EEAD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0520834-9D81-4191-85D8-FF5CCC2EEAD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

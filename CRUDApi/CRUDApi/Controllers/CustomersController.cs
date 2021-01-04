@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CRUDApi.Data;
 using CRUDApi.Services;
-using CRUDApi.Models.CustomerModels;
+using CRUDApi.Models.Customers;
 
 namespace CRUDApi.Controllers
 {
@@ -25,9 +24,9 @@ namespace CRUDApi.Controllers
         }
         // GET: api/Customers
         [HttpGet]
-        public async Task<ActionResult<List<Customer>>> GetCustomers()
+        public async Task<ActionResult<List<Customer>>> GetCustomers(string genderType)
         {
-            return await _customerService.GetProducts("Male");
+            return await _customerService.GetCustomers(genderType);
         }
 
         // GET: api/Customers/5

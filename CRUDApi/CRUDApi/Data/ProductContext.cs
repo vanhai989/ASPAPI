@@ -1,5 +1,5 @@
 ﻿
-using CRUDApi.Models.ProductModes;
+using CRUDApi.Models.Products;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

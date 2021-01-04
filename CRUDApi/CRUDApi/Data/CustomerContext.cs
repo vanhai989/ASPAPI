@@ -1,5 +1,5 @@
 ﻿
-using CRUDApi.Models.CustomerModels;
+using CRUDApi.Models.Customers;
 using Microsoft.EntityFrameworkCore;
 
 namespace CRUDApi.Data
@@ -8,6 +8,6 @@ namespace CRUDApi.Data
     {
         public CustomerContext(DbContextOptions<CustomerContext> options) : base(options)
         { }
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Models.Customers.Customer> Customers { get; set; }
     }
 }

@@ -9,7 +9,9 @@ using CRUDApi.Models;
 using CRUDApi.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
-using CRUDApi.Models.ProductModes;
+using CRUDApi.Models.Products;
+using CRUDApi.Respository;
+using CRUDApi.Services;
 
 namespace CRUDApi.Controllers
 {
@@ -20,9 +22,11 @@ namespace CRUDApi.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly ProductContext _context;
-        public ProductsController(ProductContext context)
+        private readonly IProductService productService;
+        public ProductsController(ProductContext context, IProductService _productService)
         {
             _context = context;
+            productService = _productService;
         }
 
         // GET: api/Products
@@ -31,6 +35,11 @@ namespace CRUDApi.Controllers
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
             return await _context.Products.ToListAsync();
+        }
+        [HttpGet("nameProduct")]
+        public async Task<ActionResult<List<Product>>> GetProductByNameProduct(string nameProduct)
+        {
+            return await productService.GetProducts(nameProduct);
         }
 
         // GET: api/Products/5
