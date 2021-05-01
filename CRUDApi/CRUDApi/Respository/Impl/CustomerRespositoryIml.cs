@@ -21,13 +21,22 @@ namespace CRUDApi.Respository.Impl
             throw new NotImplementedException();
         }
 
-        public Task<List<Customer>> GetProducts(string _gender)
+        public Task<List<Customer>> GetCustomer(string _gender)
         {
                return Task.Run(() =>
                {
                    var result = _DataContext.Customers.Where(e => e.Gender == _gender);
                    return result.ToList();
                });
+        }
+
+        public bool IsPrime(int candidate)
+        {
+            if (candidate < 2)
+            {
+                return false;
+            }
+            throw new NotImplementedException("Not fully implemented.");
         }
     }
 }

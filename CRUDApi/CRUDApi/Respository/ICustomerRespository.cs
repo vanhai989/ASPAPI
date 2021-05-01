@@ -8,6 +8,6 @@ namespace CRUDApi.Respository
     {
         int CountProduct();
 
-        Task<List<Customer>> GetProducts(string _gender);
+        Task<List<Customer>> GetCustomer(string _gender);
     }
 }

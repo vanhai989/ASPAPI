@@ -20,7 +20,7 @@ namespace CRUDApi.Services.Impl
 
         public async Task<List<Customer>> GetProducts(string limit)
         {
-            return await customerRespository.GetProducts(limit);
+            return await customerRespository.GetCustomer(limit);
         }
        
     }

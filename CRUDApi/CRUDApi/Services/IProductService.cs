@@ -1,12 +1,14 @@
-﻿using System;
+﻿using CRUDApi.Models.ProductModes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace CRUDApi.Services
 {
-    interface IProductService
+    public interface IProductService
     {
         int CountProducts();
+        Task SendEmail(Product product);
     }
 }

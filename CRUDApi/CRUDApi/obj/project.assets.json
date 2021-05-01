@@ -10400,31 +10400,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\haiph\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\Offline Packages": {}
+    "C:\\Users\\haide\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ASP\\My_repositories\\ASPAPI\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj",
+      "projectUniqueName": "D:\\ASP\\github_respo\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj",
       "projectName": "CRUDApi",
-      "projectPath": "D:\\ASP\\My_repositories\\ASPAPI\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj",
-      "packagesPath": "C:\\Users\\haiph\\.nuget\\packages\\",
-      "outputPath": "D:\\ASP\\My_repositories\\ASPAPI\\ASPAPI\\CRUDApi\\CRUDApi\\obj\\",
+      "projectPath": "D:\\ASP\\github_respo\\ASPAPI\\CRUDApi\\CRUDApi\\CRUDApi.csproj",
+      "packagesPath": "C:\\Users\\haide\\.nuget\\packages\\",
+      "outputPath": "D:\\ASP\\github_respo\\ASPAPI\\CRUDApi\\CRUDApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\Offline Packages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\haiph\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.2.config",
+        "C:\\Users\\haide\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\DevExpress 20.2\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
@@ -10570,7 +10569,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -10,6 +10,7 @@ using CRUDApi.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using CRUDApi.Models.ProductModes;
+using CRUDApi.Services;
 
 namespace CRUDApi.Controllers
 {
@@ -20,9 +21,11 @@ namespace CRUDApi.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly ProductContext _context;
-        public ProductsController(ProductContext context)
+        private readonly IProductService _productService;
+        public ProductsController(ProductContext context, IProductService productService)
         {
             _context = context;
+            _productService = productService;
         }
 
         // GET: api/Products
