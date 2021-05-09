@@ -250,3 +250,6 @@ D:\ASP\github_respo\ASPAPI\CRUDApi\XUnitTestCRUD\obj\Debug\net5.0\XUnitTestCRUD.
 D:\ASP\github_respo\ASPAPI\CRUDApi\XUnitTestCRUD\obj\Debug\net5.0\ref\XUnitTestCRUD.dll
 D:\ASP\github_respo\ASPAPI\CRUDApi\XUnitTestCRUD\obj\Debug\net5.0\XUnitTestCRUD.pdb
 D:\ASP\github_respo\ASPAPI\CRUDApi\XUnitTestCRUD\obj\Debug\net5.0\XUnitTestCRUD.genruntimeconfig.cache
+D:\ASP\github_respo\ASPAPI\CRUDApi\XUnitTestCRUD\bin\Debug\net5.0\CRUDApi.deps.json
+D:\ASP\github_respo\ASPAPI\CRUDApi\XUnitTestCRUD\bin\Debug\net5.0\CRUDApi.runtimeconfig.json
+D:\ASP\github_respo\ASPAPI\CRUDApi\XUnitTestCRUD\bin\Debug\net5.0\CRUDApi.runtimeconfig.dev.json
